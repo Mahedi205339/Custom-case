@@ -83,9 +83,9 @@ export default function Home() {
           </div>
           <div className="col-span-full lg:col-span-1 w-full flex justify-center px-8 sm:px-16 md:px-0 mt-32 lg:mx-0 lg:mt-20 h-fit">
             <div className="relative md:max-w-xl">
-              <Image src="/your_image.png" className="absolute w-40 lg:w-52 left-56 -top-20 select-none sm:block lg:hidden xl:block" alt="" width={150} height={150} />
-              <Image alt="" src="/line.png" className="absolute w-20 -left-6 -bottom-6 select-none" />
-              <Phone/>
+              {/* <Image src="your_image.png" className="absolute w-40 lg:w-52 left-56 -top-20 select-none sm:block lg:hidden xl:block" alt="" width={150} height={150} />
+              <Image alt="" src="line.png" className="absolute w-20 -left-6 -bottom-6 select-none" /> */}
+              <Phone />
 
             </div>
 
