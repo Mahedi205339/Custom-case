@@ -38,7 +38,7 @@ const Navbar = () => {
                                     <Link href="/configure/upload"
                                         className={buttonVariants({
                                             size: 'sm',
-                                             className:"hidden sm:flex items-center gap-1"
+                                            className: "hidden sm:flex items-center gap-1"
 
                                         })}
                                     >
@@ -52,6 +52,32 @@ const Navbar = () => {
                             </>
                         ) : (
                             <>
+                                <Link href="/api/auth/register"
+                                    className={buttonVariants({
+                                        size: 'sm',
+                                        variant: 'ghost'
+                                    })}
+                                >
+                                    Sign up
+                                </Link>
+                                <Link href="/api/auth/login"
+                                    className={buttonVariants({
+                                        size: 'sm',
+                                        variant: 'ghost'
+                                    })}
+                                >
+                                    Login
+                                </Link>
+                                <Link href="/api/auth/login"
+                                    className={buttonVariants({
+                                        size: 'sm',
+                                        className: "hidden sm:flex items-center gap-1"
+
+                                    })}
+                                >
+                                    Login
+                                    <ArrowRight className='ml-1.5 h-5 w-5' />
+                                </Link>
                             </>
                         )}
                     </div>
