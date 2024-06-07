@@ -1,11 +1,6 @@
-import React from 'react';
+import MaxWidthWrapper from "./MaxWidthWrapper";
 
-const Review = () => {
-    return (
-        <div>
-            
-        </div>
-    );
-};
 
-export default Review;
+export function Reviews() {
+    return (<MaxWidthWrapper className="relative max-w-5xl"> </MaxWidthWrapper>)
+}
