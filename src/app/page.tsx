@@ -4,8 +4,10 @@ import { Icons } from "@/components/Icon";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import Phone from "@/components/Phone";
 import { Reviews } from "@/components/Review";
-import { Check, Star } from "lucide-react";
+import { buttonVariants } from "@/components/ui/button";
+import { ArrowRight, Check, Star } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 
 
@@ -201,11 +203,41 @@ export default function Home() {
               </div>
 
               <Phone className="w-60" imgSrc="/dog.jpg" />
-
             </div>
-
           </div>
 
+          <ul className="mx-auto mt-12 max-w-prose sm:text-lg">
+                
+                  <li className="flex gap-1.5 items-center text-left">
+                    <Check className="h-5 w-5 shrink-0 text-green-500" />
+                    High-quality, silicon material
+                  </li>
+                  <li className="flex gap-1.5 items-center text-left">
+                    <Check className="h-5 w-5 shrink-0 text-green-500" />
+                    Scratch- and fingerprint resistant coating
+                  </li>
+                  <li className="flex gap-1.5 items-center text-left">
+                    <Check className="h-5 w-5 shrink-0 text-green-500" />
+                    Wireless charging compatible
+                  </li>
+                  <li className="flex gap-1.5 items-center text-left">
+                    <Check className="h-5 w-5 shrink-0 text-green-500" />
+                    5 year print warranty!
+                  </li>
+                <div>
+                  <Link
+                  className={buttonVariants({
+                    size:'lg',
+                    className:"mx-auto mt-8"
+                  })}
+                  
+                  href="/configure/upload">
+                  Create your case now <ArrowRight className="h-4 w-4 ml-1.5"/>
+                  </Link>
+                </div>
+
+
+              </ul>
         </MaxWidthWrapper>
       </section>
 
