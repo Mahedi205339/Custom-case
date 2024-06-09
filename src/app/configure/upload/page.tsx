@@ -1,6 +1,8 @@
+/* eslint-disable jsx-a11y/alt-text */
 "use client"
 import { cn } from '@/lib/utils';
-import React, { useState } from 'react';
+import { Divide, Image, Loader2, MousePointerSquareDashed } from 'lucide-react';
+import React, { useState, useTransition } from 'react';
 import Dropzone, { FileRejection } from 'react-dropzone';
 
 const Page = () => {
@@ -8,6 +10,9 @@ const Page = () => {
     const [isDragOver, setIsDragOver] = useState<boolean>(false);
     const onDropRejected = () => { }
     const onDropAccepted = () => { }
+
+    const isUploading = false;
+    const [isPending, startTransition] = useTransition();
 
 
     return (
@@ -26,9 +31,34 @@ const Page = () => {
                 >
                     {({ getRootProps, getInputProps }) => (
                         <div className='h-full w-full flex-1 flex-col items-center justify-center'{...getRootProps()}>
-                            <input {...getInputProps()}/>
-                            sdgs
-                            
+                            <input {...getInputProps()} />
+
+                            {isDragOver ? (<MousePointerSquareDashed className='h-6 w-6' />) : isUploading || isPending ? (<Loader2 className='animate-spin h-6 w-6 text-zinc-500 mb-2' />) : (<Image className='h-6 w-6 text-zinc-500 mb-2' />)}
+
+                        <div className='flex flex-col justify-center mb-2 text-sm text-zinc-700'>
+                            { 
+                            isUploading ?(
+                                <div className='flex flex-col items-center'>
+                                            <p>Uploading...</p>
+                                </div>
+                            ): isPending ?(
+                                <div>
+
+                                </div>
+                            ): isDragOver ? (
+                                <span>
+
+                                </span>
+                            ): (
+                                <span>
+
+                                </span>
+                            )
+
+                            }
+
+                        </div>
+
                         </div>
                     )}
 
