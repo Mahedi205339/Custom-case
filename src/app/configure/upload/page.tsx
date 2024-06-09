@@ -10,12 +10,12 @@ const Page = () => {
 
     const [isDragOver, setIsDragOver] = useState<boolean>(false);
 
-    const [uploadProgress, setUploadProgress] = useState<number>(45)
+    const [uploadProgress, setUploadProgress] = useState<number>(0)
 
     const onDropRejected = () => { }
     const onDropAccepted = () => { }
 
-    const isUploading = true;
+    const isUploading = false;
     const [isPending, startTransition] = useTransition();
 
 
