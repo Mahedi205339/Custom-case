@@ -30,6 +30,8 @@ const Navbar = async () => {
                                     Sign out
                                 </Link>
 
+
+
                                 {isAdmin ? <>
                                     <Link href="/api/auth/logout"
                                         className={buttonVariants({
@@ -38,20 +40,22 @@ const Navbar = async () => {
                                     >
                                         Dashboard
                                     </Link>
-                                    <Link href="/configure/upload"
-                                        className={buttonVariants({
-                                            size: 'sm',
-                                            className: "hidden sm:flex items-center gap-1"
 
-                                        })}
-                                    >
-                                        Create Case
-                                        <ArrowRight className='ml-1.5 h-5 w-5' />
-                                    </Link>
 
                                 </>
                                     : null
                                 }
+
+                                <Link href="/configure/upload"
+                                    className={buttonVariants({
+                                        size: 'sm',
+                                        className: "hidden sm:flex items-center gap-1"
+
+                                    })}
+                                >
+                                    Create Case
+                                    <ArrowRight className='ml-1.5 h-5 w-5' />
+                                </Link>
                             </>
                         ) : (
                             <>
@@ -70,6 +74,16 @@ const Navbar = async () => {
                                     })}
                                 >
                                     Login
+                                </Link>
+                                <Link href="/configure/upload"
+                                    className={buttonVariants({
+                                        size: 'sm',
+                                        className: "hidden sm:flex items-center gap-1"
+
+                                    })}
+                                >
+                                    Create Case
+                                    <ArrowRight className='ml-1.5 h-5 w-5' />
                                 </Link>
                             </>
                         )}
