@@ -1,10 +1,21 @@
 import React from 'react';
 
-const page = async () => {
-    //make a db call here
+interface PageProps {
+    searchParams: {
+        [key: string]: string | string[] | undefined
+    }
+}
+
+
+const page = async ({ searchParams }: PageProps) => {
+    //make db call here
+    const { id } = searchParams
+
+
+
     return (
         <div>
-            
+            {id}
         </div>
     );
 };
