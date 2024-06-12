@@ -27,7 +27,7 @@ const DesignConfigurator = ({ configId, imageUrl, imageDimensions }:
                     </AspectRatio>
                     <div className='absolute z-40 inset-0 left-[3px] top-px right-[3px] bottom-px first-letter:first-line:  rounded-[32px] shadow-[0_0_0_99999px_rgba(229,231,235,0.6)]' />
                     <div className={cn('absolute , left-[3px] top-px right-[3px] bottom-px rounded-[32px]',
-                        'bg-blue-900'
+                        'bg-blue-950'
                     )} />
 
                 </div>
