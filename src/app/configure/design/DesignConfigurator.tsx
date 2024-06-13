@@ -7,8 +7,10 @@ import { Rnd } from 'react-rnd'
 import HandleComponents from '../HandleComponents';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { RadioGroup } from "@headlessui/react"
-import { COLORS } from '@/validators/option-validator';
+import { COLORS, MODELS } from '@/validators/option-validator';
 import { Label } from '@/components/ui/label';
+import { DropdownMenu, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
+import { Button } from '@/components/ui/button';
 
 interface DesignConfiguratorProps {
     configId: string
@@ -25,9 +27,13 @@ const DesignConfigurator = ({ configId,
 
     const [options, setOptions] = useState<{
         color: (typeof COLORS)[number]
+        model: (typeof MODELS.options)[number]
     }>({
-        color: COLORS[0]
+        color: COLORS[0],
+        model: MODELS.options[0]
     })
+
+
 
 
 
@@ -125,6 +131,18 @@ const DesignConfigurator = ({ configId,
 
                             <div className='relative flex flex-col gap-3 w-full'>
                                 <Label>Model</Label>
+                                <DropdownMenu>
+                                    <DropdownMenuTrigger asChild>
+                                        <Button variant="outline"
+                                            className='w-full justify-between'
+                                            role='combobox'
+                                        >
+                                            {options.model.label}
+
+                                        </Button>
+
+                                    </DropdownMenuTrigger>
+                                </DropdownMenu>
 
                             </div>
                         </div>
