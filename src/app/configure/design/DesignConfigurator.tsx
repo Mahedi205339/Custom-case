@@ -68,6 +68,28 @@ const DesignConfigurator = ({ configId,
             const actualX = renderedPosition.x - leftOffset;
             const actualY = renderedPosition.y - topOffset;
 
+            const canvas = document.createElement("canvas")
+            canvas.width = width;
+            canvas.height = height;
+            const ctx = canvas.getContext('2d')
+
+            const userImage = new Image()
+            userImage.crossOrigin = "anonymous"
+            userImage.src = imageUrl
+            await new Promise((resolve) => (userImage.onload = resolve))
+
+            ctx?.drawImage(
+                userImage,
+                actualX,
+                actualY,
+                renderedDimension.width,
+                renderedDimension.height
+            )
+
+            const base64 = canvas.toDataURL()
+            const base64Data = base64.split(",")[1]
+            console.log(base64);
+            console.log(base64Data);
 
         } catch (err) {
 
@@ -289,15 +311,18 @@ const DesignConfigurator = ({ configId,
                                 // isLoading={isPending}
                                 // disabled={isPending}
                                 // loadingText="Saving"
-                                // onClick={() =>
-                                //     saveConfig({
-                                //         configId,
-                                //         color: options.color.value,
-                                //         finish: options.finish.value,
-                                //         material: options.materials.value,
-                                //         model: options.model.value,
-                                //     })
+                                onClick={() =>
+                                    saveConfiguration()
+                                }
+
+                                // {
+                                //     configId,
+                                //     color: options.color.value,
+                                //     finish: options.finish.value,
+                                //     material: options.materials.value,
+                                //     model: options.model.value,
                                 // }
+
                                 size='sm'
                                 className='w-full'>
                                 Continue
