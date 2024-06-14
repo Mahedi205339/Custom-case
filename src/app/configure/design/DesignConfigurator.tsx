@@ -13,6 +13,7 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Check, ChevronsUpDown } from 'lucide-react';
 import { BASE_PRICE } from '@/config/product';
+import { useUploadThing } from '@/lib/uploadthing';
 
 interface DesignConfiguratorProps {
     configId: string
@@ -51,6 +52,8 @@ const DesignConfigurator = ({ configId,
     const phoneCaseRef = useRef<HTMLElement>(null)
     const containerRef = useRef<HTMLElement>(null)
 
+    const { startUpload } = useUploadThing('imageUploader')
+
     async function saveConfiguration() {
         try {
             if (!phoneCaseRef.current) return
@@ -88,12 +91,29 @@ const DesignConfigurator = ({ configId,
 
             const base64 = canvas.toDataURL()
             const base64Data = base64.split(",")[1]
-            console.log(base64);
-            console.log(base64Data);
+            // console.log(base64);
+            // console.log(base64Data);
+
+            const blob = base64ToBlob(base64Data, "image/png")
+            const file = new File([blob], "filename.png", { type: 'image/png' })
+
+            startUpload([file], { configId })
+
+
 
         } catch (err) {
 
         }
+    }
+
+    function base64ToBlob(base64: string, mimeType: string) {
+        const byteCharacters = atob(base64)
+        const byteNumbers = new Array(byteCharacters.length)
+        for (let i = 0; i < byteCharacters.length; i++) {
+            byteNumbers[i] = byteCharacters.charCodeAt(i)
+        }
+        const byteArray = new Uint8Array(byteNumbers)
+        return new Blob([byteArray], { type: mimeType })
     }
 
 
