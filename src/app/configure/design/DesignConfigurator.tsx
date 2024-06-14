@@ -205,6 +205,13 @@ const DesignConfigurator = ({ configId,
                                                             :null}
                                                         </span>
                                                     </span>
+                                                    <RadioGroup.Description className="mt-2 flex text-sm sm:ml-4 sm:mt-0 sm:flex-col sm:text-right" as='span'>
+                                                        <span className='font-medium text-gray-900'>
+                                                            ${option.price}
+
+                                                        </span>
+
+                                                    </RadioGroup.Description>
 
                                                 </RadioGroup.Option>
                                             ))}
