@@ -2,7 +2,7 @@
 import { AspectRatio } from '@/components/ui/aspect-ratio';
 import { useState } from 'react';
 import NextImage from 'next/image'
-import { cn } from '@/lib/utils';
+import { cn, formatePrice } from '@/lib/utils';
 import { Rnd } from 'react-rnd'
 import HandleComponents from '../HandleComponents';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -11,7 +11,8 @@ import { COLORS, FINISHES, MATERIALS, MODELS } from '@/validators/option-validat
 import { Label } from '@/components/ui/label';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { Button } from '@/components/ui/button';
-import { Check, ChevronsUpDown } from 'lucide-react';
+import { ArrowRight, Check, ChevronsUpDown } from 'lucide-react';
+import { BASE_PRICE } from '@/config/product';
 
 interface DesignConfiguratorProps {
     configId: string
@@ -88,7 +89,7 @@ const DesignConfigurator = ({ configId,
             </Rnd>
         </div>
 
-        <div className='h-[37.5rem] flex flex-col bg-white'>
+        <div className='h-[37.5rem] w-full col-span-full lg:col-span-1 flex flex-col bg-white'>
             <ScrollArea className='relative flex-1 overflow-auto'>
                 <div aria-hidden="true" className='absolute z-10 inset-x-0 bottom-0 h-12 bg-gradient-to-t-from-white pointer-events-none ' />
 
@@ -191,23 +192,23 @@ const DesignConfigurator = ({ configId,
                                                     key={option.value}>
                                                     <span className='flex items-center'>
                                                         <span className='flex flex-col text-sm'>
-                                                            <RadioGroup.Label 
-                                                            className="font-medium text-gray-900"
-                                                            as='span'>
+                                                            <RadioGroup.Label
+                                                                className="font-medium text-gray-900"
+                                                                as='span'>
                                                                 {option.label}
                                                             </RadioGroup.Label>
                                                             {option.description ?
-                                                            <RadioGroup.Description as='span'
-                                                            className="text-gray-500"
-                                                            >
-                                                               <span className='block sm:inline'> {option.description}</span>
-                                                            </RadioGroup.Description>
-                                                            :null}
+                                                                <RadioGroup.Description as='span'
+                                                                    className="text-gray-500"
+                                                                >
+                                                                    <span className='block sm:inline'> {option.description}</span>
+                                                                </RadioGroup.Description>
+                                                                : null}
                                                         </span>
                                                     </span>
                                                     <RadioGroup.Description className="mt-2 flex text-sm sm:ml-4 sm:mt-0 sm:flex-col sm:text-right" as='span'>
                                                         <span className='font-medium text-gray-900'>
-                                                            ${option.price}
+                                                            {formatePrice(option.price / 100)}
 
                                                         </span>
 
@@ -225,8 +226,40 @@ const DesignConfigurator = ({ configId,
                     </div>
                 </div>
             </ScrollArea>
-        </div >
 
+            <div className='w-full px-8 h-16 bg-white'>
+                <div className='h-px w-full bg-zinc-200' />
+                <div className='w-full h-full flex justify-end items-center'>
+                    <div className='w-full flex gap-6 items-center'>
+                        <p className='font-medium whitespace-nowrap'>
+                            {formatePrice(
+                                (BASE_PRICE + options.finish.price + options.materials.price) /
+                                100
+                            )}
+                        </p>
+                        <Button
+                            // isLoading={isPending}
+                            // disabled={isPending}
+                            // loadingText="Saving"
+                            // onClick={() =>
+                            //     saveConfig({
+                            //         configId,
+                            //         color: options.color.value,
+                            //         finish: options.finish.value,
+                            //         material: options.materials.value,
+                            //         model: options.model.value,
+                            //     })
+                            // }
+                            size='sm'
+                            className='w-full'>
+                            Continue
+                            <ArrowRight className='h-4 w-4 ml-1.5 inline' />
+                        </Button>
+                    </div>
+                </div>
+            </div>
+
+        </div >
     </div >);
 };
 
