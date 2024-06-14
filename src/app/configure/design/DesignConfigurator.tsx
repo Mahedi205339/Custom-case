@@ -39,7 +39,23 @@ const DesignConfigurator = ({ configId,
         finish: FINISHES.options[0]
     })
 
+    const [renderedDimension, setRenderedDimension] = useState({
+        width: imageDimensions.width / 4,
+        height: imageDimensions.height / 4,
+    })
 
+    const [renderedPosition, setRenderedPosition] = useState({
+        x: 150,
+        y: 205,
+    })
+
+    async function saveConfiguration() {
+        try {
+
+        } catch {
+
+        }
+    }
 
 
 
@@ -66,9 +82,21 @@ const DesignConfigurator = ({ configId,
             <Rnd default={{
                 x: 150,
                 y: 205,
-                height: imageDimensions.height / 8,
-                width: imageDimensions.width / 8,
+                height: imageDimensions.height / 4,
+                width: imageDimensions.width / 4,
             }}
+                onResizeStop={(_, __, ref, ___, { x, y }) => {
+                    setRenderedDimension({
+                        height: parseInt(ref.style.height.slice(0, -2)),
+                        width: parseInt(ref.style.width.slice(0, -2)),
+                    })
+
+                    setRenderedPosition({ x, y })
+                }}
+                onDragStop={(_, data) => {
+                    const { x, y } = data
+                    setRenderedPosition({ x, y })
+                }}
                 lockAspectRatio
                 className='absolute z-20 border-[3px] border-primary'
                 resizeHandleComponent={{
