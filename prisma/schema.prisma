@@ -32,10 +32,22 @@ enum CaseFinish {
   texture
 }
 
+enum CaseColor {
+  black
+  blue
+  rose
+  cyan
+  green
+}
+
 model Configuration {
-  id              String  @id @default(cuid())
+  id              String        @id @default(cuid())
   width           Int
   height          Int
+  model           PhoneModel?
+  material        CaseMaterial?
+  color           CaseColor?
+  finish          CaseFinish?
   imageUrl        String
   croppedImageUrl String?
 }
