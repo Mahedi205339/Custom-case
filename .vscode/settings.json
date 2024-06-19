@@ -5,6 +5,7 @@
         "datasource",
         "Metadate",
         "tailwindcss",
+        "tanstack",
         "Uploadthing"
     ]
 }
