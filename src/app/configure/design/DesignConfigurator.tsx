@@ -15,6 +15,7 @@ import { ArrowRight, Check, ChevronsUpDown } from 'lucide-react';
 import { BASE_PRICE } from '@/config/product';
 import { useUploadThing } from '@/lib/uploadthing';
 import { useToast } from '@/components/ui/use-toast';
+import { useMutation } from '@tanstack/react-query';
 
 interface DesignConfiguratorProps {
     configId: string
@@ -29,6 +30,10 @@ const DesignConfigurator = ({ configId,
     imageDimensions }:
     DesignConfiguratorProps) => {
         const {toast} = useToast()
+
+        const {} = useMutation({
+            mutationKey:["save-config"]
+        })
 
     const [options, setOptions] = useState<{
         color: (typeof COLORS)[number]
