@@ -16,6 +16,9 @@ import { BASE_PRICE } from '@/config/product';
 import { useUploadThing } from '@/lib/uploadthing';
 import { useToast } from '@/components/ui/use-toast';
 import { useMutation } from '@tanstack/react-query';
+import { saveConfig as _saveConfig, SaveConfigArgs } from './actions';
+import { useRouter } from 'next/navigation';
+
 
 interface DesignConfiguratorProps {
     configId: string
@@ -29,11 +32,25 @@ const DesignConfigurator = ({ configId,
     imageUrl,
     imageDimensions }:
     DesignConfiguratorProps) => {
-        const {toast} = useToast()
+    const { toast } = useToast()
+    const router = useRouter()
 
-        const {} = useMutation({
-            mutationKey:["save-config"]
-        })
+    const { mutate: saveConfig } = useMutation({
+        mutationKey: ["save-config"],
+        mutationFn: async (args: SaveConfigArgs) => {
+            await Promise.all([saveConfiguration(), _saveConfig(args)])
+        },
+        onError: () => {
+            toast({
+                title: "Something went wrong!",
+                description:"There was an error on our end. Please try again.",
+                variant:"destructive"
+            })
+        },
+        onSuccess: ()=>{
+            router.push(`/configure/preview?id=${configId}`)
+        }
+    })
 
     const [options, setOptions] = useState<{
         color: (typeof COLORS)[number]
@@ -109,11 +126,11 @@ const DesignConfigurator = ({ configId,
 
 
         } catch (err) {
-         toast({
-            title:"Something went wrong!",
-            description:"There is a problem saving your config, please tru again",
-            variant:"destructive"
-         })
+            toast({
+                title: "Something went wrong!",
+                description: "There is a problem saving your config, please tru again",
+                variant: "destructive"
+            })
         }
     }
 
@@ -336,9 +353,9 @@ const DesignConfigurator = ({ configId,
                                     100
                                 )}
                             </p>
-                            <Button 
-                            //TODO: addition configIds and set crop pic
-                                
+                            <Button
+                                //TODO: addition configIds and set crop pic
+
                                 onClick={() =>
                                     saveConfiguration()
                                 }
