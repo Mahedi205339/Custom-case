@@ -16,8 +16,8 @@ import { BASE_PRICE } from '@/config/product';
 import { useUploadThing } from '@/lib/uploadthing';
 import { useToast } from '@/components/ui/use-toast';
 import { useMutation } from '@tanstack/react-query';
-import { SaveConfigArgs } from './actions';
 import { useRouter } from 'next/navigation';
+import { saveConfig as _saveConfig, SaveConfigArgs } from './actions'
 
 
 interface DesignConfiguratorProps {
@@ -35,10 +35,10 @@ const DesignConfigurator = ({ configId,
     const { toast } = useToast()
     const router = useRouter()
 
-    const { mutate:  , isPending } = useMutation({
+    const { mutate: saveConfig } = useMutation({
         mutationKey: ['save-config'],
         mutationFn: async (args: SaveConfigArgs) => {
-            await Promise.all([saveConfiguration(), ])
+            await Promise.all([saveConfiguration(), _saveConfig(args)])
         },
         onError: () => {
             toast({
@@ -73,73 +73,73 @@ const DesignConfigurator = ({ configId,
         x: 150,
         y: 205,
     })
-   
+
     const phoneCaseRef = useRef<HTMLDivElement>(null)
     const containerRef = useRef<HTMLDivElement>(null)
-  
+
     const { startUpload } = useUploadThing('imageUploader')
-  
+
     async function saveConfiguration() {
-      try {
-        const {
-          left: caseLeft,
-          top: caseTop,
-          width,
-          height,
-        } = phoneCaseRef.current!.getBoundingClientRect()
-  
-        const { left: containerLeft, top: containerTop } =
-          containerRef.current!.getBoundingClientRect()
-  
-        const leftOffset = caseLeft - containerLeft
-        const topOffset = caseTop - containerTop
-  
-        const actualX = renderedPosition.x - leftOffset
-        const actualY = renderedPosition.y - topOffset
-  
-        const canvas = document.createElement('canvas')
-        canvas.width = width
-        canvas.height = height
-        const ctx = canvas.getContext('2d')
-  
-        const userImage = new Image()
-        userImage.crossOrigin = 'anonymous'
-        userImage.src = imageUrl
-        await new Promise((resolve) => (userImage.onload = resolve))
-  
-        ctx?.drawImage(
-          userImage,
-          actualX,
-          actualY,
-          renderedDimension.width,
-          renderedDimension.height
-        )
-  
-        const base64 = canvas.toDataURL()
-        const base64Data = base64.split(',')[1]
-  
-        const blob = base64ToBlob(base64Data, 'image/png')
-        const file = new File([blob], 'filename.png', { type: 'image/png' })
-  
-        await startUpload([file], { configId })
-      } catch (err) {
-        toast({
-          title: 'Something went wrong',
-          description:
-            'There was a problem saving your config, please try again.',
-          variant: 'destructive',
-        })
-      }
+        try {
+            const {
+                left: caseLeft,
+                top: caseTop,
+                width,
+                height,
+            } = phoneCaseRef.current!.getBoundingClientRect()
+
+            const { left: containerLeft, top: containerTop } =
+                containerRef.current!.getBoundingClientRect()
+
+            const leftOffset = caseLeft - containerLeft
+            const topOffset = caseTop - containerTop
+
+            const actualX = renderedPosition.x - leftOffset
+            const actualY = renderedPosition.y - topOffset
+
+            const canvas = document.createElement('canvas')
+            canvas.width = width
+            canvas.height = height
+            const ctx = canvas.getContext('2d')
+
+            const userImage = new Image()
+            userImage.crossOrigin = 'anonymous'
+            userImage.src = imageUrl
+            await new Promise((resolve) => (userImage.onload = resolve))
+
+            ctx?.drawImage(
+                userImage,
+                actualX,
+                actualY,
+                renderedDimension.width,
+                renderedDimension.height
+            )
+
+            const base64 = canvas.toDataURL()
+            const base64Data = base64.split(',')[1]
+
+            const blob = base64ToBlob(base64Data, 'image/png')
+            const file = new File([blob], 'filename.png', { type: 'image/png' })
+
+            await startUpload([file], { configId })
+        } catch (err) {
+            toast({
+                title: 'Something went wrong',
+                description:
+                    'There was a problem saving your config, please try again.',
+                variant: 'destructive',
+            })
+        }
     }
-  
+
     function base64ToBlob(base64: string, mimeType: string) {
-      const byteCharacters = atob(base64)
-      const byteNumbers = new Array(byteCharacters.length)
-      for (let i = 0; i < byteCharacters.length; i++) {
-        byteNumbers[i] = byteCharacters.charCodeAt(i)
-      }
-      const byteArray = new Uint8Array(byteNumbers)
-      return new Blob([byteArray], { type: mimeType })
+        const byteCharacters = atob(base64)
+        const byteNumbers = new Array(byteCharacters.length)
+        for (let i = 0; i < byteCharacters.length; i++) {
+            byteNumbers[i] = byteCharacters.charCodeAt(i)
+        }
+        const byteArray = new Uint8Array(byteNumbers)
+        return new Blob([byteArray], { type: mimeType })
     }
 
     return (
@@ -352,8 +352,16 @@ const DesignConfigurator = ({ configId,
                                 )}
                             </p>
                             <Button
+                                onClick={() =>
+                                    saveConfig({
+                                        configId,
+                                        color: options.color.value,
+                                        finish: options.finish.value,
+                                        material: options.materials.value,
+                                        model: options.model.value,
+                                    })
+                                }
 
-                                
                                 size='sm'
                                 className='w-full'>
                                 Continue

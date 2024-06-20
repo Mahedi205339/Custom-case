@@ -14,40 +14,38 @@ enum OrderStatus {
 }
 
 enum PhoneModel {
-  iPhonex
-  iPhone11
-  iPhone12
-  iPhone13
-  iPhone14
-  iPhone15
+  iphonex
+  iphone11
+  iphone12
+  iphone13
+  iphone14
+  iphone15
 }
 
 enum CaseMaterial {
   silicone
-  polycarboate
+  polycarbonate
 }
 
 enum CaseFinish {
   smooth
-  texture
+  textured
 }
 
 enum CaseColor {
   black
   blue
   rose
-  cyan
-  green
 }
 
 model Configuration {
   id              String        @id @default(cuid())
   width           Int
   height          Int
+  imageUrl        String
+  color           CaseColor?
   model           PhoneModel?
   material        CaseMaterial?
-  color           CaseColor?
   finish          CaseFinish?
-  imageUrl        String
   croppedImageUrl String?
 }

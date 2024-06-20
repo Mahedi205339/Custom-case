@@ -11,14 +11,13 @@ export type SaveConfigArgs = {
     configId: string,
 }
 
-
-const saveConfig = async ({
+export async function saveConfig({
     color,
     finish,
     material,
     model,
     configId
-}: SaveConfigArgs) => {
+}: SaveConfigArgs) {
 
     await db.configuration.update({
         where: { id: configId },
@@ -26,4 +25,4 @@ const saveConfig = async ({
     })
 }
 
-export saveConfig;
+
