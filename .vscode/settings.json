@@ -3,6 +3,8 @@
         "clsx",
         "Configurator",
         "datasource",
+        "headlessui",
+        "lucide",
         "Metadate",
         "tailwindcss",
         "tanstack",
