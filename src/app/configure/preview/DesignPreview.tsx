@@ -15,7 +15,7 @@ const DesignPreview = ({ configuration }: { configuration: Configuration }) => {
         setShowConfetti(true)
     }, [])
 
-    const { color, model, finish , material } = configuration;
+    const { color, model, finish, material } = configuration;
     const tw = COLORS.find((supportedColor) => supportedColor.value === color)?.tw;
 
     const { label: modelLabel } = MODELS.options.find(({ value }) => value === model)!;
@@ -69,40 +69,57 @@ const DesignPreview = ({ configuration }: { configuration: Configuration }) => {
                             </ol>
                         </div>
                     </div>
-                    <div className='mt-8 '>
+                    <div className='mt-8'>
                         <div className='bg-gray-50 p-6 sm:rounded-lg sm:p-8'>
                             <div className='flow-root text-sm'>
                                 <div className='flex items-center justify-between py-1 mt-2'>
-                                    <p className='text-gray-600'>Base Price</p>
+                                    <p className='text-gray-600'>Base price</p>
                                     <p className='font-medium text-gray-900'>
                                         {formatePrice(BASE_PRICE / 100)}
                                     </p>
-
                                 </div>
+
                                 {finish === 'textured' ? (
-                                    <div>
-                                        <p className='text-gray-600'>Texture finish</p>
+                                    <div className='flex items-center justify-between py-1 mt-2'>
+                                        <p className='text-gray-600'>Textured finish</p>
                                         <p className='font-medium text-gray-900'>
                                             {formatePrice(PRODUCT_PRICES.finish.texture / 100)}
                                         </p>
                                     </div>
                                 ) : null}
+
                                 {material === 'polycarbonate' ? (
-                                    <div>
-                                        <p className='text-gray-600'>Texture finish</p>
+                                    <div className='flex items-center justify-between py-1 mt-2'>
+                                        <p className='text-gray-600'>Soft polycarbonate material</p>
                                         <p className='font-medium text-gray-900'>
                                             {formatePrice(PRODUCT_PRICES.materials.polycarbonate / 100)}
                                         </p>
                                     </div>
                                 ) : null}
 
+                                <div className='my-2 h-px bg-gray-200' />
+
+                                <div className='flex items-center justify-between py-2'>
+                                    <p className='font-semibold text-gray-900'>Order total</p>
+                                    <p className='font-semibold text-gray-900'>
+                                        {/* {formatePrice(totalPrice / 100)} */}
+                                    </p>
+                                </div>
                             </div>
                         </div>
 
+                        <div className='mt-8 flex justify-end pb-12'>
+                            {/* <Button
+                                onClick={() => handleCheckout()}
+                                className='px-4 sm:px-6 lg:px-8'>
+                                Check out <ArrowRight className='h-4 w-4 ml-1.5 inline' />
+                            </Button> */}
+                        </div>
                     </div>
                 </div>
-
             </div>
+
+
         </>
     );
 };
