@@ -355,10 +355,10 @@ const DesignConfigurator = ({ configId,
                                 onClick={() =>
                                     saveConfig({
                                         configId,
-                                        color: options.color.value,
-                                        finish: options.finish.value,
                                         material: options.materials.value,
                                         model: options.model.value,
+                                        color: options.color.value,
+                                        finish: options.finish.value,
                                     })
                                 }
 
