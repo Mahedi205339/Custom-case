@@ -20,6 +20,10 @@ const DesignPreview = ({ configuration }: { configuration: Configuration }) => {
 
     const { label: modelLabel } = MODELS.options.find(({ value }) => value === model)!;
 
+    let totalPrice = BASE_PRICE
+    if (material === 'polycarbonate')
+      totalPrice += PRODUCT_PRICES.materials.polycarbonate
+    if (finish === 'textured') totalPrice += PRODUCT_PRICES.finish.texture
 
 
 
@@ -102,7 +106,7 @@ const DesignPreview = ({ configuration }: { configuration: Configuration }) => {
                                 <div className='flex items-center justify-between py-2'>
                                     <p className='font-semibold text-gray-900'>Order total</p>
                                     <p className='font-semibold text-gray-900'>
-                                        {/* {formatePrice(totalPrice / 100)} */}
+                                        {formatePrice(totalPrice / 100)}
                                     </p>
                                 </div>
                             </div>
