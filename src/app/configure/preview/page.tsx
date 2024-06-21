@@ -1,6 +1,7 @@
 import { db } from '@/db';
 import { notFound } from 'next/navigation';
 import React from 'react';
+import DesignPreview from './DesignPreview';
 
 interface PageProps {
     searchParams: {
@@ -24,9 +25,7 @@ const page = async ({ searchParams }: PageProps) => {
     }
 
     return (
-        <DesignPreview>
-
-        </DesignPreview>
+        <DesignPreview />
     );
 };
 
