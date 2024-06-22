@@ -98,7 +98,7 @@ export const FINISHES = {
             label: "Texture Finish",
             value: "texture",
             description: "Soft grippy texture",
-            price: PRODUCT_PRICES.finish.texture
+            price: PRODUCT_PRICES.finish.textured
         },
     ]
 } as const
