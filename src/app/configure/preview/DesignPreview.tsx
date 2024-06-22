@@ -1,10 +1,11 @@
 "use client"
 import Phone from '@/components/Phone';
+import { Button } from '@/components/ui/button';
 import { BASE_PRICE, PRODUCT_PRICES } from '@/config/product';
 import { cn, formatePrice } from '@/lib/utils';
 import { COLORS, MODELS } from '@/validators/option-validator';
 import { Configuration } from '@prisma/client';
-import { Check } from 'lucide-react';
+import { ArrowRight, Check } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
 import Confetti from 'react-dom-confetti';
 
@@ -29,7 +30,8 @@ const DesignPreview = ({ configuration }: { configuration: Configuration }) => {
     }
 
 
-
+    // console.log(formatePrice(PRODUCT_PRICES.finish.textured /100))
+    // console.log(formatePrice(PRODUCT_PRICES.materials.polycarbonate))
 
     return (
         <>
@@ -90,7 +92,8 @@ const DesignPreview = ({ configuration }: { configuration: Configuration }) => {
                                     <div className='flex items-center justify-between py-1 mt-2'>
                                         <p className='text-gray-600'>Textured finish</p>
                                         <p className='font-medium text-gray-900'>
-                                            {formatePrice(PRODUCT_PRICES.finish.textured / 100)}
+                                            {formatePrice(PRODUCT_PRICES.finish.textured /100)}
+
                                         </p>
                                     </div>
                                 ) : null}
@@ -116,11 +119,11 @@ const DesignPreview = ({ configuration }: { configuration: Configuration }) => {
                         </div>
 
                         <div className='mt-8 flex justify-end pb-12'>
-                            {/* <Button
-                                onClick={() => handleCheckout()}
+                            <Button
+                                // onClick={() => handleCheckout()}
                                 className='px-4 sm:px-6 lg:px-8'>
                                 Check out <ArrowRight className='h-4 w-4 ml-1.5 inline' />
-                            </Button> */}
+                            </Button>
                         </div>
                     </div>
                 </div>
