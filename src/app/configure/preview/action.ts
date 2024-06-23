@@ -2,8 +2,10 @@
 
 import { BASE_PRICE, PRODUCT_PRICES } from "@/config/product"
 import { db } from "@/db"
+import { stripe } from "@/lib/stripe"
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server"
 import { Order } from "@prisma/client"
+import { useId } from "react"
 
 export const createCheckoutSession = async ({ configId }:
     { configId: string }
@@ -15,7 +17,7 @@ export const createCheckoutSession = async ({ configId }:
         throw new Error("No such configuration!")
     }
     const { getUser } = getKindeServerSession();
-    const user = await getUser()
+    const user = await getUser();
 
     if (!user) {
         throw new Error("You need to be logged in first!")
@@ -44,5 +46,25 @@ export const createCheckoutSession = async ({ configId }:
             }
         })
     }
+
+    const product = await stripe.products.create({
+        name: "Custom iPhone Case",
+        images: [configuration.imageUrl],
+        default_price_data: {
+            currency: "USD",
+            unit_amount: price,
+        }
+    })
+    const stripeSession = await stripe.checkout.sessions.create({
+        success_url: `${process.env.NEXT_PUBLIC_SERVER_URL}/thank-you?orderId-${order.id}`,
+        cancel_url: `${process.env.NEXT_PUBLIC_SERVER_URL}/preview?orderId-${configuration.id}`,
+        payment_method_types: ['card', 'paypal'],
+        mode: "payment",
+        shipping_address_collection: { allowed_countries: ["DE", 'US', 'BD', 'GR', 'IN'] },
+        metadata: {
+            useId: user.id,
+            orderId: order.id,
+        }
+    })
 
 }
