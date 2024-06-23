@@ -5,7 +5,6 @@ import { db } from "@/db"
 import { stripe } from "@/lib/stripe"
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server"
 import { Order } from "@prisma/client"
-import { useId } from "react"
 
 export const createCheckoutSession = async ({ configId }:
     { configId: string }
@@ -55,6 +54,7 @@ export const createCheckoutSession = async ({ configId }:
             unit_amount: price,
         }
     })
+
     const stripeSession = await stripe.checkout.sessions.create({
         success_url: `${process.env.NEXT_PUBLIC_SERVER_URL}/thank-you?orderId-${order.id}`,
         cancel_url: `${process.env.NEXT_PUBLIC_SERVER_URL}/preview?orderId-${configuration.id}`,
@@ -64,7 +64,10 @@ export const createCheckoutSession = async ({ configId }:
         metadata: {
             useId: user.id,
             orderId: order.id,
-        }
+        },
+        line_items: [{ price: product.default_price as string, quantity: 1 }],
     })
+
+    return { url: stripeSession.url }
 
 }

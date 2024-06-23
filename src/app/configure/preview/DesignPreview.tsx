@@ -9,9 +9,14 @@ import { useMutation } from '@tanstack/react-query';
 import { ArrowRight, Check } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
 import Confetti from 'react-dom-confetti';
+import { createCheckoutSession } from './action';
+import { useRouter } from 'next/navigation';
+import { useToast } from '@/components/ui/use-toast';
 
 const DesignPreview = ({ configuration }: { configuration: Configuration }) => {
 
+     const router = useRouter()
+     const {toast} = useToast()
     const [showConfetti, setShowConfetti] = useState(false);
     useEffect(() => {
         setShowConfetti(true)
@@ -36,8 +41,19 @@ const DesignPreview = ({ configuration }: { configuration: Configuration }) => {
 
     const {} = useMutation({
         mutationKey:["get-checkout-session"],
-        mutationFn:
-    })
+        mutationFn:createCheckoutSession ,
+        onSuccess:({url})=>{
+            if(url) router.push(url)
+                else throw new Error('Unable to retrieve payment URL')
+        },
+        onError: () =>{
+      toast({
+        title:'Something went wrong',
+        description:'There was an error on our end. Please try again',
+        variant:'destructive'
+      })
+        }
+       })
 
     return (
         <>
