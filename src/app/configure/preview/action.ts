@@ -21,6 +21,7 @@ export const createCheckoutSession = async ({
 
     const { getUser } = getKindeServerSession()
     const user = await getUser()
+    
 
     if (!user) {
         throw new Error('You need to be logged in')
