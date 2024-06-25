@@ -131,7 +131,7 @@ const DesignPreview = ({ configuration }: { configuration: Configuration }) => {
 
                                 {finish === 'textured' ? (
                                     <div className='flex items-center justify-between py-1 mt-2'>
-                                        <p className='text-gray-600'>Textured finish</p>
+                                        <p className='text-gray-600'>textured finish</p>
                                         <p className='font-medium text-gray-900'>
                                             {formatePrice(PRODUCT_PRICES.finish.textured / 100)}
 

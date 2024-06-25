@@ -95,8 +95,8 @@ export const FINISHES = {
             price: PRODUCT_PRICES.finish.smooth,
         },
         {
-            label: "Texture Finish",
-            value: "texture",
+            label: "Textured Finish",
+            value: "textured",
             description: "Soft grippy texture",
             price: PRODUCT_PRICES.finish.textured
         },
