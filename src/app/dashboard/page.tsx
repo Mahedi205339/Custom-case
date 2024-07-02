@@ -101,6 +101,9 @@ const Page = async () => {
                             </CardFooter>
                         </Card>
                     </div>
+                    <h1 className='text-4xl font-bold tracking-tight'>
+                        Incoming orders
+                    </h1>
                 </div>
 
             </div>
