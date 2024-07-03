@@ -39,7 +39,7 @@ const OrderReceivedEmail = ({
                             src={`${baseUrl}/monkey3.png`}
                             width='65'
                             height='73'
-                            alt='delivery snake'
+                            alt='delivery monkey'
                             style={{ margin: 'auto' }}
                         />
                         <Heading style={global.heading}>Thank you for your order!</Heading>
