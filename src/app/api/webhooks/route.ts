@@ -1,9 +1,9 @@
+import { db } from '@/db'
+import { stripe } from '@/lib/stripe'
 import { headers } from 'next/headers'
 import { NextResponse } from 'next/server'
 import Stripe from 'stripe'
 import { Resend } from 'resend'
-import { db } from '@/db'
-import { stripe } from '@/lib/stripe'
 import OrderReceivedEmail from '@/components/emails/OrderReceiveEmail'
 
 const resend = new Resend(process.env.RESEND_API_KEY)
