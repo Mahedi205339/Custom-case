@@ -27,7 +27,7 @@ export default function Home() {
               </div>
 
               <h1 className="relative w-fit tracking-tight text-balance mt-16 font-bold !leading-tight text-gray-900 text-5xl md:text-6xl lg:text-7xl">
-                Your Image on a <span className="bg-green-600 px-2"> Custom</span> Phone Case!
+                Your Image on a <span className="bg-orange-600 px-2"> Custom</span> Phone Case!
               </h1>
               <p className="mt-8 text-lg lg:pr-10 max-w-prose text-center lg:text-left text-balance md:text-wrap lg:text-lg">
                 Capture your favorite memories with your own, {' '} <span className="font-semibold"> one-of-one</span> phone case.
@@ -38,15 +38,15 @@ export default function Home() {
               <ul className="mt-8 space-y-2 text-left font-medium flex flex-col items-center sm:text-start">
                 <div className="space-y-2">
                   <li className="flex gap-1.5 items-center text-left">
-                    <Check className="h-5 w-5 shrink-0 text-green-500" />
+                    <Check className="h-5 w-5 shrink-0 text-orange-500" />
                     High-quality, durable material.
                   </li>
                   <li className="flex gap-1.5 items-center text-left">
-                    <Check className="h-5 w-5 shrink-0 text-green-500" />
+                    <Check className="h-5 w-5 shrink-0 text-orange-500" />
                     5 years print guarantee
                   </li>
                   <li className="flex gap-1.5 items-center text-left">
-                    <Check className="h-5 w-5 shrink-0 text-green-500" />
+                    <Check className="h-5 w-5 shrink-0 text-orange-500" />
                     All Modern Android and iPhone supported
                   </li>
                 </div>
@@ -78,11 +78,11 @@ export default function Home() {
                 {/* stars */}
                 <div className='flex flex-col justify-between items-center sm:items-start'>
                   <div className='flex gap-0.5'>
-                    <Star className='h-4 w-4 text-green-600 fill-green-600' />
-                    <Star className='h-4 w-4 text-green-600 fill-green-600' />
-                    <Star className='h-4 w-4 text-green-600 fill-green-600' />
-                    <Star className='h-4 w-4 text-green-600 fill-green-600' />
-                    <Star className='h-4 w-4 text-green-600 fill-green-600' />
+                    <Star className='h-4 w-4 text-orange-600 fill-orange-600' />
+                    <Star className='h-4 w-4 text-orange-600 fill-orange-600' />
+                    <Star className='h-4 w-4 text-orange-600 fill-orange-600' />
+                    <Star className='h-4 w-4 text-orange-600 fill-orange-600' />
+                    <Star className='h-4 w-4 text-orange-600 fill-orange-600' />
                   </div>
 
                   <p>
@@ -111,8 +111,8 @@ export default function Home() {
 
           <div className="flex flex-col lg:flex-row items-center gap-4 sm:gap-6">
 
-            <h2 className="order-1 mt-2 tracking-tight text-center text-balance !leading-tight font-bold text-5xl md:text-6xl text-gray-900">
-              What our <span className="relative px-2 text-green-600">customers
+            <h2 className="order-1 mt-2 tracking-tight text-center text-balance !leading-tight font-bold text-5xl md:text-6xl text-gray-900 my-5 lg:my-10">
+              What our <span className="relative px-2 text-orange-600">customers
                 <Icons.underline className="hidden sm:block pointer-events-none absolute inset-x-0 -bottom-6" />
               </span> say!
             </h2>
@@ -121,11 +121,11 @@ export default function Home() {
           <div className="mx-auto grid max-w-2xl grid-cols-1 px-4 lg:mx-0 lg:max-w-none lg:grid-cols-2 gap-y-16">
             <div className="flex flex-auto flex-col gap-4 lg:pr-8 xl:pr-20">
               <div className="flex gap-0.5 mb-2">
-                <Star className='h-4 w-4 text-green-600 fill-green-600' />
-                <Star className='h-4 w-4 text-green-600 fill-green-600' />
-                <Star className='h-4 w-4 text-green-600 fill-green-600' />
-                <Star className='h-4 w-4 text-green-600 fill-green-600' />
-                <Star className='h-4 w-4 text-green-600 fill-green-600' />
+                <Star className='h-4 w-4 text-orange-600 fill-orange-600' />
+                <Star className='h-4 w-4 text-orange-600 fill-orange-600' />
+                <Star className='h-4 w-4 text-orange-600 fill-orange-600' />
+                <Star className='h-4 w-4 text-orange-600 fill-orange-600' />
+                <Star className='h-4 w-4 text-orange-600 fill-orange-600' />
               </div>
               <div className="text-lg leading-8">
                 <p>
@@ -139,7 +139,7 @@ export default function Home() {
                 <div className="flex flex-col">
                   <p className="font-semibold">Leonel Messi</p>
                   <div className="flex gap-1.5 items-center">
-                    <Check className="h-4 w-4 stroke-[3px] text-green-60 text-cyan-600" />
+                    <Check className="h-4 w-4 stroke-[3px] text-orange-60 text-cyan-600" />
                     <p className="text-sm">Verified Purchase</p>
                   </div>
 
@@ -149,11 +149,11 @@ export default function Home() {
             </div>
             <div className="flex flex-auto flex-col gap-4 lg:pr-8 xl:pr-20">
               <div className="flex gap-0.5 mb-2">
-                <Star className='h-4 w-4 text-green-600 fill-green-600' />
-                <Star className='h-4 w-4 text-green-600 fill-green-600' />
-                <Star className='h-4 w-4 text-green-600 fill-green-600' />
-                <Star className='h-4 w-4 text-green-600 fill-green-600' />
-                <Star className='h-4 w-4 text-green-600 fill-green-600' />
+                <Star className='h-4 w-4 text-orange-600 fill-orange-600' />
+                <Star className='h-4 w-4 text-orange-600 fill-orange-600' />
+                <Star className='h-4 w-4 text-orange-600 fill-orange-600' />
+                <Star className='h-4 w-4 text-orange-600 fill-orange-600' />
+                <Star className='h-4 w-4 text-orange-600 fill-orange-600' />
               </div>
               <div className="text-lg leading-8">
                 <p>
@@ -167,7 +167,7 @@ export default function Home() {
                 <div className="flex flex-col">
                   <p className="font-semibold">Leonel Messi</p>
                   <div className="flex gap-1.5 items-center">
-                    <Check className="h-4 w-4 stroke-[3px] text-green-60 text-cyan-600" />
+                    <Check className="h-4 w-4 stroke-[3px] text-orange-60 text-cyan-600" />
                     <p className="text-sm">Verified Purchase</p>
                   </div>
 
@@ -187,7 +187,7 @@ export default function Home() {
           <div className="md-12 px-6 lg:px-8">
             <div className="mx-auto max-w-2xl sm:text-center">
               <h2 className="order-1 mt-2 tracking-tight text-center text-balance !leading-tight font-bold text-5xl md:text-6xl text-gray-900">
-                Upload your photo and get <span className="relative px-2 bg-green-600">your own case
+                Upload your photo and get <span className="relative px-2 bg-orange-600">your own case
                 </span>
               </h2>
             </div>
@@ -209,19 +209,19 @@ export default function Home() {
           <ul className="mx-auto mt-12 max-w-prose sm:text-lg">
                 
                   <li className="flex gap-1.5 items-center text-left">
-                    <Check className="h-5 w-5 shrink-0 text-green-500" />
+                    <Check className="h-5 w-5 shrink-0 text-orange-500" />
                     High-quality, silicon material
                   </li>
                   <li className="flex gap-1.5 items-center text-left">
-                    <Check className="h-5 w-5 shrink-0 text-green-500" />
+                    <Check className="h-5 w-5 shrink-0 text-orange-500" />
                     Scratch- and fingerprint resistant coating
                   </li>
                   <li className="flex gap-1.5 items-center text-left">
-                    <Check className="h-5 w-5 shrink-0 text-green-500" />
+                    <Check className="h-5 w-5 shrink-0 text-orange-500" />
                     Wireless charging compatible
                   </li>
                   <li className="flex gap-1.5 items-center text-left">
-                    <Check className="h-5 w-5 shrink-0 text-green-500" />
+                    <Check className="h-5 w-5 shrink-0 text-orange-500" />
                     5 year print warranty!
                   </li>
                 <div>
